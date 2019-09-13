@@ -47,9 +47,12 @@ func post(format string) PostRelatedError {
 func Check(a, b string) bool {
 	aFile, err := ioutil.ReadFile(usersPath + a + "/friends")
 	if err != nil {
-		fmt.Println(err)
 		return false
 	}
-	fmt.Println(string(aFile))
-	return true
+	for _, slice := range strings.Split(string(aFile), "\n") {
+		if slice == b {
+			return true
+		}
+	}
+	return false
 }
