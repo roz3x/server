@@ -51,7 +51,7 @@ func Check(a, b string) bool {
 	}
 	aList, err := ioutil.ReadAll(aFile)
 	if err != nil {
-		fmt.Print("hellp")
+		fmt.Println(err)
 		return false
 	}
 	aSplitedList := strings.Split(string(aList), "\n")
