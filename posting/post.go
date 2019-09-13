@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"time"
 )
 
 type postRelatedError struct {
@@ -35,8 +34,8 @@ func post(format string) postRelatedError {
 	if err != nil {
 		return recieveraccountaintthere
 	}
-	fmt.Fprintf(senderFile, "%v--->%v--->%v\n", time.Now(), internalformat[1], internalformat[2])
-	fmt.Fprintf(recieverFile, "%v--->%v--->%v\n", time.Now(), internalformat[0], internalformat[2])
+	fmt.Fprintf(senderFile, "%v--->%v\n", internalformat[1], internalformat[2])
+	fmt.Fprintf(recieverFile, "%v--->%v\n", internalformat[0], internalformat[2])
 	senderFile.Close()
 	recieverFile.Close()
 	return nicelyDone

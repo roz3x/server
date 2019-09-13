@@ -13,4 +13,5 @@ var (
 	errorInCreatingSentFile    = fileRelatedMessage{" error occurd while creating sent file "}
 	errorInCreatingRecivedFile = fileRelatedMessage{" error occurd while creating recieved file "}
 	doneMakingFolder           = fileRelatedMessage{" done !! "}
+	errorInCreatingFriendFile  = fileRelatedMessage{" error occured while creating friends file "}
 )

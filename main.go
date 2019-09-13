@@ -1,11 +1,11 @@
 package main
 
 import (
+	"localhostServer/create"
+	"localhostServer/friend"
 	"localhostServer/posting"
 	"net/http"
 	"os"
-
-	"localhostServer/create"
 )
 
 var (
@@ -18,5 +18,6 @@ func main() {
 	port := "8080"
 	http.HandleFunc("/user/create/", create.AccountCreator)
 	http.HandleFunc("/post/", posting.Post)
+	http.HandleFunc("/frnd/", friend.AddFriend)
 	http.ListenAndServe(":"+port, nil)
 }

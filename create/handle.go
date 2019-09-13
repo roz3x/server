@@ -13,6 +13,7 @@ func AccountCreator(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, urlData.returnMessage)
 
 }
+
 func create(user string) fileRelatedMessage {
 
 	err := os.Mkdir(usersPath+user, 0777)
@@ -26,6 +27,10 @@ func create(user string) fileRelatedMessage {
 	_, err = os.Create(usersPath + user + "/recieved")
 	if err != nil {
 		return errorInCreatingRecivedFile
+	}
+	_, err = os.Create(usersPath + user + "/friends")
+	if err != nil {
+		return errorInCreatingFriendFile
 	}
 	return doneMakingFolder
 
