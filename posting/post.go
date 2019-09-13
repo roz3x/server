@@ -47,6 +47,7 @@ func post(format string) PostRelatedError {
 func Check(a, b string) bool {
 	aFile, err := os.OpenFile(usersPath+a+"/friends", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
 	if err != nil {
+		fmt.Print("hellp")
 		return false
 	}
 	aList, err := ioutil.ReadAll(aFile)
