@@ -13,5 +13,4 @@ func main() {
 	http.HandleFunc("/post/", posting.Post)
 	http.HandleFunc("/frnd/", friend.AddFriend)
 	http.ListenAndServe(":"+port, nil)
-	// fmt.Println(posting.Check("shivang", "ki2"))
 }
