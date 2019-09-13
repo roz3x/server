@@ -2,12 +2,14 @@ package posting
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"strings"
 )
 
-type postRelatedError struct {
-	returnMessage string
+//PostRelatedError gives return message
+type PostRelatedError struct {
+	ReturnMessage string
 }
 
 var (
@@ -15,13 +17,13 @@ var (
 )
 
 var (
-	nicelyDone               = postRelatedError{" done !! sent yo message "}
-	countaintthree           = postRelatedError{" 3 arguements should be there "}
-	senderaccountaintthere   = postRelatedError{" cant find sender's account "}
-	recieveraccountaintthere = postRelatedError{" cant find reciever account "}
+	nicelyDone               = PostRelatedError{" done !! sent yo message "}
+	countaintthree           = PostRelatedError{" 3 arguements should be there "}
+	senderaccountaintthere   = PostRelatedError{" cant find sender's account "}
+	recieveraccountaintthere = PostRelatedError{" cant find reciever account "}
 )
 
-func post(format string) postRelatedError {
+func post(format string) PostRelatedError {
 	internalformat := strings.Split(format, "/")
 	if len(internalformat) != 3 {
 		return countaintthree
@@ -39,4 +41,20 @@ func post(format string) postRelatedError {
 	senderFile.Close()
 	recieverFile.Close()
 	return nicelyDone
+}
+
+//Check checks the frind list
+func Check(a, b string) bool {
+	aFile, err := os.OpenFile(usersPath+a+"/friends", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
+	if err != nil {
+		return false
+	}
+	aList, err := ioutil.ReadAll(aFile)
+	if err != nil {
+		return false
+	}
+	aSplitedList := strings.Split(string(aList), "\n")
+	fmt.Printf("%v\n", aSplitedList)
+	aFile.Close()
+	return true
 }

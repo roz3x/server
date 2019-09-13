@@ -24,6 +24,6 @@ var (
 //AddFriend adds data to friend file
 func AddFriend(w http.ResponseWriter, r *http.Request) {
 	msg := add(string([]byte(r.URL.Path)[6:]))
-	fmt.Fprintf(w, msg.ReturnMessage)
-	fmt.Printf(msg.ReturnMessage)
+	fmt.Fprintf(w, msg.ReturnMessage+"\n")
+	fmt.Printf(msg.ReturnMessage + "\n")
 }

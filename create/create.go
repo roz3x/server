@@ -1,17 +1,27 @@
 package create
 
+import "os"
+
 var (
 	usersPath = "./users/"
 )
 
-type fileRelatedMessage struct {
-	returnMessage string
+func create(user string) FileRelatedMessage {
+	err := os.Mkdir(usersPath+user, 0777)
+	if err != nil {
+		return fileAlreadyExists
+	}
+	_, err = os.Create(usersPath + user + "/sent")
+	if err != nil {
+		return errorInCreatingSentFile
+	}
+	_, err = os.Create(usersPath + user + "/recieved")
+	if err != nil {
+		return errorInCreatingRecivedFile
+	}
+	_, err = os.Create(usersPath + user + "/friends")
+	if err != nil {
+		return errorInCreatingFriendFile
+	}
+	return doneMakingFolder
 }
-
-var (
-	fileAlreadyExists          = fileRelatedMessage{" file already exists "}
-	errorInCreatingSentFile    = fileRelatedMessage{" error occurd while creating sent file "}
-	errorInCreatingRecivedFile = fileRelatedMessage{" error occurd while creating recieved file "}
-	doneMakingFolder           = fileRelatedMessage{" done !! "}
-	errorInCreatingFriendFile  = fileRelatedMessage{" error occured while creating friends file "}
-)

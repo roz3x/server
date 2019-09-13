@@ -3,35 +3,24 @@ package create
 import (
 	"fmt"
 	"net/http"
-	"os"
+)
+
+//FileRelatedMessage gives return message
+type FileRelatedMessage struct {
+	ReturnMessage string
+}
+
+var (
+	fileAlreadyExists          = FileRelatedMessage{" file already exists "}
+	errorInCreatingSentFile    = FileRelatedMessage{" error occurd while creating sent file "}
+	errorInCreatingRecivedFile = FileRelatedMessage{" error occurd while creating recieved file "}
+	doneMakingFolder           = FileRelatedMessage{" done !! "}
+	errorInCreatingFriendFile  = FileRelatedMessage{" error occured while creating friends file "}
 )
 
 //AccountCreator makes account
 func AccountCreator(w http.ResponseWriter, r *http.Request) {
-	urlData := create(string([]byte(r.URL.Path)[13:]))
-	fmt.Printf(urlData.returnMessage + "\n")
-	fmt.Fprintf(w, urlData.returnMessage)
-
-}
-
-func create(user string) fileRelatedMessage {
-
-	err := os.Mkdir(usersPath+user, 0777)
-	if err != nil {
-		return fileAlreadyExists
-	}
-	_, err = os.Create(usersPath + user + "/sent")
-	if err != nil {
-		return errorInCreatingSentFile
-	}
-	_, err = os.Create(usersPath + user + "/recieved")
-	if err != nil {
-		return errorInCreatingRecivedFile
-	}
-	_, err = os.Create(usersPath + user + "/friends")
-	if err != nil {
-		return errorInCreatingFriendFile
-	}
-	return doneMakingFolder
-
+	urlData := create(string([]byte(r.URL.Path)[6:]))
+	fmt.Printf(urlData.ReturnMessage + "\n")
+	fmt.Fprintf(w, urlData.ReturnMessage)
 }
