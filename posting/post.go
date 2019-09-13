@@ -45,17 +45,11 @@ func post(format string) PostRelatedError {
 
 //Check checks the frind list
 func Check(a, b string) bool {
-	aFile, err := os.OpenFile(usersPath+a+"/friends", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
-	if err != nil {
-		return false
-	}
-	aList, err := ioutil.ReadAll(aFile)
+	aFile, err := ioutil.ReadFile(usersPath + a + "/friends")
 	if err != nil {
 		fmt.Println(err)
 		return false
 	}
-	aSplitedList := strings.Split(string(aList), "\n")
-	fmt.Printf("%v\n", aSplitedList)
-	aFile.Close()
+	fmt.Println(string(aFile))
 	return true
 }
