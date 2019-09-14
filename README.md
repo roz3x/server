@@ -1,4 +1,4 @@
- # sever 
+ # server 
 
 a minimal chatting sever . it works on REST like api . 
 
