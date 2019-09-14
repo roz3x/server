@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# rm -rf ./users/*
+rm -rf ./users/*
 
 
 curl -i localhost:8080/user/peka/123
