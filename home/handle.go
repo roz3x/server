@@ -10,7 +10,7 @@ import (
 func Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "%v", "hello")
 	pusher, ok := w.(http.Pusher)
-	if ok {
+	if !ok {
 		log.Fatal("no not")
 		return
 	}
