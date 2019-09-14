@@ -3,9 +3,9 @@
 rm -rf ./users/*
 
 
-curl -i localhost:8080/user/peka
-curl -i localhost:8080/user/roz3x
-curl -i localhost:8080/user/maria
+curl -i localhost:8080/user/peka/123
+curl -i localhost:8080/user/roz3x/157
+curl -i localhost:8080/user/maria/894
 
 
 curl -i localhost:8080/frnd/roz3x/peka
