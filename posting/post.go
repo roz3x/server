@@ -12,7 +12,7 @@ func post(format string) int {
 	if len(fields) != 3 {
 		return -1
 	}
-	senderFile, err := os.OpenFile(usersPath+fields[0]+"/sent", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
+	senderFile, err := os.OpenFile(usersPath+"maria"+"/sent", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
 	if err != nil {
 		return -277
 	}
