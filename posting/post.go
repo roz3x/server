@@ -8,21 +8,21 @@ import (
 )
 
 func post(format string) PostRelatedError {
-	internalformat := strings.Split(format, "/")
-	if len(internalformat) != 3 {
+	fields := strings.Split(format, "/")
+	if len(fields) != 3 {
 		return countaintthree
 	}
-	senderFile, err := os.OpenFile(usersPath+internalformat[0]+"/sent", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
+	senderFile, err := os.OpenFile(usersPath+fields[0]+"/sent", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
 	if err != nil {
 		return senderaccountaintthere
 	}
-	recieverFile, err := os.OpenFile(usersPath+internalformat[1]+"/recieved", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
+	recieverFile, err := os.OpenFile(usersPath+fields[1]+"/recieved", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
 	if err != nil {
 		return recieveraccountaintthere
 	}
-	if check(internalformat[0], internalformat[1]) {
-		fmt.Fprintf(senderFile, "%v--->%v\n", internalformat[1], internalformat[2])
-		fmt.Fprintf(recieverFile, "%v--->%v\n", internalformat[0], internalformat[2])
+	if check(fields[0], fields[1]) {
+		fmt.Fprintf(senderFile, "%v--->%v\n", fields[1], fields[2])
+		fmt.Fprintf(recieverFile, "%v--->%v\n", fields[0], fields[2])
 	} else {
 		return notfriends
 	}
