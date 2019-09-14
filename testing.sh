@@ -13,5 +13,5 @@ curl -i localhost:8080/frnd/peka/roz3x
 curl -i localhost:8080/frnd/maria/peka
 
 curl -i localhost:8080/post/roz3x/peka/hellobrother
-# curl -i localhost:8080/post/peka/roz3x/supbro
-# curl -i localhost:8080/post/maria/roz3x/hii
+curl -i localhost:8080/post/peka/roz3x/supbro
+curl -i localhost:8080/post/maria/roz3x/hii
