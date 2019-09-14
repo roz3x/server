@@ -21,6 +21,7 @@ var (
 //AccountCreator makes account
 func AccountCreator(w http.ResponseWriter, r *http.Request) {
 	urlData := create(string([]byte(r.URL.Path)[6:]))
-	fmt.Println(urlData.ReturnMessage + "\n" + r.Header.Get("x-forwarded-for"))
+	fmt.Println(urlData.ReturnMessage + "\n")
+	fmt.Printf("%v\n", r.Header)
 	fmt.Fprintf(w, urlData.ReturnMessage)
 }
