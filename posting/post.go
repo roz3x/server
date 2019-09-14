@@ -9,12 +9,12 @@ import (
 
 func post(format string) int {
 	fields := strings.Split(format, "/")
-	fmt.Printf("%v\n", fields)
 	if len(fields) != 3 {
 		return -1
 	}
 	senderFile, err := os.OpenFile(usersPath+fields[0]+"/sent", os.O_WRONLY, os.ModeAppend)
 	if err != nil {
+		fmt.Printf("%v\n", err)
 		return -2
 	}
 	recieverFile, err := os.OpenFile(usersPath+fields[1]+"/recieved", os.O_WRONLY, os.ModeAppend)
