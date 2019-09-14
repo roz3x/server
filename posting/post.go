@@ -9,6 +9,7 @@ import (
 
 func post(format string) int {
 	fields := strings.Split(format, "/")
+	fmt.Printf("%v\n", fields)
 	if len(fields) != 3 {
 		return -1
 	}
