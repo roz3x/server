@@ -12,7 +12,7 @@ var (
 func create(user string) int {
 	fields := strings.Split(user, "/")
 	if len(fields) != 2 {
-		return -1
+		return -100
 	}
 	err := os.Mkdir(usersPath+user, 0777)
 	if err != nil {
