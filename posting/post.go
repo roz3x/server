@@ -7,26 +7,26 @@ import (
 	"strings"
 )
 
-func post(format string) PostRelatedError {
+func post(format string) int {
 	fields := strings.Split(format, "/")
 	if len(fields) != 3 {
-		return countaintthree
+		return -1
 	}
 	senderFile, err := os.OpenFile(usersPath+fields[0]+"/sent", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
 	if err != nil {
-		return senderaccountaintthere
+		return -2
 	}
 	recieverFile, err := os.OpenFile(usersPath+fields[1]+"/recieved", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
 	if err != nil {
-		return recieveraccountaintthere
+		return -3
 	}
 	if check(fields[0], fields[1]) {
 		fmt.Fprintf(senderFile, "%v--->%v\n", fields[1], fields[2])
 		fmt.Fprintf(recieverFile, "%v--->%v\n", fields[0], fields[2])
 	} else {
-		return notfriends
+		return -4
 	}
-	return nicelyDone
+	return 0
 }
 
 func check(a, b string) bool {
