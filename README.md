@@ -1,8 +1,8 @@
- #sever 
+ # sever 
 
 a minimal chatting sever . it works on REST like api . 
 
-###working 
+### working 
 
 in the main file , there are total 3 endpoints yet 
 
