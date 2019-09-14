@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	usersPath = "../users/"
+	usersPath = "./users/"
 )
 
 //Post 's the message
