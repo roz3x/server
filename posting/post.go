@@ -14,8 +14,7 @@ func post(format string) int {
 	}
 	senderFile, err := os.OpenFile(usersPath+fields[0]+"/sent", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
 	if err != nil {
-		fmt.Print(usersPath + fields[0] + "/sent")
-		// return -2
+		return -2
 	}
 	recieverFile, err := os.OpenFile(usersPath+fields[1]+"/recieved", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
 	if err != nil {
