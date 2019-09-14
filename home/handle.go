@@ -14,7 +14,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(ok)
 		return
 	}
-	if ok = pusher.Push("./README.md", nil); ok != nil {
+	if err := pusher.Push("./README.md", nil); err != nil {
 		log.Fatal(ok)
 		return
 	}
