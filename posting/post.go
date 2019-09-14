@@ -13,11 +13,11 @@ func post(format string) int {
 	if len(fields) != 3 {
 		return -1
 	}
-	senderFile, err := os.OpenFile(usersPath+fields[0]+"/sent", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
+	senderFile, err := os.OpenFile(usersPath+fields[0]+"/sent", os.O_WRONLY, os.ModeAppend)
 	if err != nil {
 		return -2
 	}
-	recieverFile, err := os.OpenFile(usersPath+fields[1]+"/recieved", os.O_WRONLY|os.O_APPEND, os.ModeAppend)
+	recieverFile, err := os.OpenFile(usersPath+fields[1]+"/recieved", os.O_WRONLY, os.ModeAppend)
 	if err != nil {
 		return -3
 	}
