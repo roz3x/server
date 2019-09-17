@@ -2,17 +2,22 @@ package home
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
 )
 
 //Home is home page
 func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "%v", "hello")
-	pusher, ok := w.(http.Pusher)
+	body, err := ioutil.ReadFile("./text.htm")
+	if err != nil {
+		log.Print("error with file part\n")
+		return
+	}
+	fmt.Fprintf(w, string(body))
+	push, ok := w.(http.Pusher)
 	if !ok {
 		return
 	}
-	if err := pusher.Push("./README.md", nil); err != nil {
-		return
-	}
+	push.Push("hello", nil)
 }

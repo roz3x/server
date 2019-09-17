@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <script>
+            webSocket = new WebSocket("ws://localhost:8080","http");
+            WebSocket.addEventListener('open',function (event){
+                socket.send("hello mf");
+            })
+        </script>
+    </head>
+    <body>
+       <h2> 
+           hey ! here is the content
+       </h2>
+</body>
+</html>

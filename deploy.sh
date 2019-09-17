@@ -1,6 +1,5 @@
 #!/bin//bash
-git add * 
-git commit -m "commented via deploy.sh"
-
-go build -o ./bin/server . 
-./bin/server 
+rm -rf ./bin/*
+git add *
+git commit -m "automatic deploy"
+git push 
