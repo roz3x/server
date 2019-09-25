@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    hello this page now has a content
+</body>
+    <script>
+        window.onload = () =>{
+            if (window["WebSocket"]) {
+                conn = new WebSocket("ws://"+document.location.host+"/ws")
+                conn.onclose = () =>{
+                    console.log("close")
+                }
+                conn.onopen = () =>{
+                    console.log("open")
+                    window.setInterval(()=>{
+                    conn.send("hello my name is shivang ")
+                  },10)
+                }        
+                conn.onmessage =(e) =>{
+                    console.log(e)
+                }     
+            }           
+        }
+    </script>
+</html>

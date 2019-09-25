@@ -6,6 +6,7 @@ import (
 	"server/friend"
 	"server/home"
 	"server/posting"
+	"server/ws"
 )
 
 func main() {
@@ -14,5 +15,6 @@ func main() {
 	http.HandleFunc("/user/", create.AccountCreator)
 	http.HandleFunc("/post/", posting.Post)
 	http.HandleFunc("/frnd/", friend.AddFriend)
+	http.HandleFunc("/ws", ws.Ws)
 	http.ListenAndServe(":"+port, nil)
 }
