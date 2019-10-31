@@ -1,6 +1,6 @@
  # server 
 
-a minimal chatting sever . it works on REST like api . 
+a minimal chatting sever . it works on REST like api . and soon will be ported to web-scoket
 ( web sockets is ws package )
 
 ### purpose 
